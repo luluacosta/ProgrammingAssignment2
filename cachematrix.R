@@ -2,7 +2,7 @@
 ## By Lulu :o)
 
 
-##Sets a variable called inverso to null. This variable will be the result
+##Sets a variable called inverso to null. This variable will be where the solved matrix is stored
 ##Sets functions to make a matrix, and get/set the value of "inverso"
 
 makeCacheMatrix <- function(x = matrix()) {
@@ -19,8 +19,14 @@ makeCacheMatrix <- function(x = matrix()) {
 
 
 ## This function solves the matrix
-## First gets the cached data if it exists, if it does it sets "inverso" to that value
-## if it doesn't it solves the matrix and prints that value...
+## First it attempts to get the variable called "inverso" (the results of solving the matrix)...
+## If it gets a value that is NOT NULL it means that the matrix has already been solved
+## and therefore no need to solve it again, so it prints a message "getting cached data"
+## and sets the variable "inverso" to that value. Then it prints the value.
+## If the value it gets when it attempts to get "inverso" is NULL it means that the matrix
+## hasn't been solved, so then it uses "get" to get the matrix (that was made with the previous function)
+## and it solves the matrix, stores it in inverso, also sets value of setinverso to the solved matrix so it
+## can be used by the other formula.
 
 cacheSolve <- function(x, ...) {
     inverso <- x$getinverso() 
@@ -33,3 +39,4 @@ cacheSolve <- function(x, ...) {
     x$setinverso(inverso)
     inverso
 }
+
