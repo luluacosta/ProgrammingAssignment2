@@ -1,15 +1,35 @@
-## Put comments here that give an overall description of what your
-## functions do
+## Caching the inverse of a Matrix
+## By Lulu :o)
 
-## Write a short comment describing this function
+
+##Sets a variable called inverso to null. This variable will be the result
+##Sets functions to make a matrix, and get/set the value of "inverso"
 
 makeCacheMatrix <- function(x = matrix()) {
-
+    inverso <- NULL
+    set <- function(y) {
+        x <<- y
+        inverso <<- NULL
+    }
+    get <- function() x
+    setinverso <- function(inverso) inverso <<- inverso
+    getinverso <- function() inverso
+    list(set=set, get=get, setinverso=setinverso, getinverso=getinverso)
 }
 
 
-## Write a short comment describing this function
+## This function solves the matrix
+## First gets the cached data if it exists, if it does it sets "inverso" to that value
+## if it doesn't it solves the matrix and prints that value...
 
 cacheSolve <- function(x, ...) {
-        ## Return a matrix that is the inverse of 'x'
+    inverso <- x$getinverso()
+    if(!is.null(inverso)) {
+        message("getting cached data")
+        return(inverso)
+    }
+    datos <- x$get()
+    inverso <- solve(datos)
+    x$setinverso(inverso)
+    inverso
 }
