@@ -34,9 +34,9 @@ cacheSolve <- function(x, ...) {
         message("getting cached data")
         return(inverso)
     }
-    datos <- x$get()
+    datos <- x$get() #get the matrix made with the other function
     inverso <- solve(datos) #solve gets the inverso of a matrix
-    x$setinverso(inverso)
+    x$setinverso(inverso) #set inverso to the value of inverso (that was made on the other function)
     inverso
 }
 
