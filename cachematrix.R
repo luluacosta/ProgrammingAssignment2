@@ -23,13 +23,13 @@ makeCacheMatrix <- function(x = matrix()) {
 ## if it doesn't it solves the matrix and prints that value...
 
 cacheSolve <- function(x, ...) {
-    inverso <- x$getinverso()
-    if(!is.null(inverso)) {
+    inverso <- x$getinverso() 
+    if(!is.null(inverso)) { #if i already have the data no need to re calculate
         message("getting cached data")
         return(inverso)
     }
     datos <- x$get()
-    inverso <- solve(datos)
+    inverso <- solve(datos) #solve gets the inverso of a matrix
     x$setinverso(inverso)
     inverso
 }
